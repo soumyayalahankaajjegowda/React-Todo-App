@@ -1,13 +1,21 @@
-function AddTodo() {
+// TodoList.jsx
+import TodoItem from "./TodoItem";
+
+function TodoList({ todos, onToggleComplete, onDelete, onEdit, onSave }) {
   return (
-  <div class="container   text-center">
-  <div class="row kg-row">
-          <div class="col-6"><input type="text" placeholder="Enter Todo Here" /></div>
-          <div class="col-4">Create Mockup</div>
-          <div class="col-2"><button type="button" class="btn btn-success kg-button">ADD</button></div>
-          </div>
-          </div>
-);
+    <div className="todo-list">
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggleComplete={onToggleComplete}
+          onDelete={onDelete}
+          onEdit={onEdit}
+          onSave={onSave}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default AddTodo;
+export default TodoList;
